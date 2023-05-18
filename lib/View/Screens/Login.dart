@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
@@ -19,6 +20,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _email = TextEditingController();
+  final _pass = TextEditingController();
+
+  Login(){
+    try{
+      FirebaseAuth.instance.signInWithEmailAndPassword(email: _email.text, password: _pass.text);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MainPage()));
+
+    }on FirebaseException catch(e){
+      print(e.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Center(child: AppLargeText(text: 'Login')),
                       const SizedBox(height: 20),
-                      RoundedInputField(hintText: 'Your Email', onChanged: (value) {}),
-                      RoundedPasswordField(onChanged: (value) {}),
+                      RoundedInputField(hintText: 'Your Email', onChanged: (value) {}, controller: _email,),
+                      RoundedPasswordField(onChanged: (value) {}, controller: _pass,),
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: GestureDetector(
@@ -71,7 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 8),
                       DefaultButton(
                         buttonText: 'Login',
-                        press: () {},
+                        press: () {
+                          Login();
+                        },
                       ),
                       const SizedBox(height: 20),
                       Row(
@@ -86,9 +101,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       SizedBox(height: 50,),
-                      GestureDetector(
-                        onTap: (){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage()));},
-                          child: AppText(text: "Home")),
                       Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
                     ],
                   ),

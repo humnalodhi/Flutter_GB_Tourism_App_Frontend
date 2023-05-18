@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_tour/Widgets/default_button.dart';
 import 'package:gb_tour/Widgets/rounded_input_field.dart';
+import 'package:gb_tour/Widgets/rounded_input_field2.dart';
 
 import '../../../Widgets/app_large_text.dart';
 
@@ -69,11 +70,11 @@ class EditProfilePage extends StatelessWidget {
               const SizedBox(height: 20),
               const Divider(),
               const SizedBox(height: 20),
-              RoundedInputField(hintText: 'Full Name', onChanged: (value){}, icon: Icons.person_outlined,),
-              RoundedInputField(hintText: 'Email', onChanged: (value){}, icon: Icons.email_outlined,),
-              RoundedInputField(hintText: 'Phone', onChanged: (value){}, icon: Icons.phone_outlined,),
-              RoundedInputField(hintText: 'Location', onChanged: (value){}, icon: Icons.location_on_outlined,),
-              RoundedInputField(hintText: 'Password', onChanged: (value){}, icon: Icons.fingerprint,),
+              RoundedInputField2(hintText: 'Full Name', onChanged: (value){}, icon: Icons.person_outlined,),
+              RoundedInputField2(hintText: 'Email', onChanged: (value){}, icon: Icons.email_outlined,),
+              RoundedInputField2(hintText: 'Phone', onChanged: (value){}, icon: Icons.phone_outlined,),
+              RoundedInputField2(hintText: 'Location', onChanged: (value){}, icon: Icons.location_on_outlined,),
+              RoundedInputField2(hintText: 'Password', onChanged: (value){}, icon: Icons.fingerprint,),
               DefaultButton(buttonText: 'Edit Profile', press: (){}),
             ],
           ),

@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../Widgets/app_large_text.dart';
 import '../../Widgets/app_text.dart';
 import '../../Widgets/default_button.dart';
@@ -15,6 +16,20 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _username = TextEditingController();
+  final _email = TextEditingController();
+  final _pass = TextEditingController();
+  final _phone = TextEditingController();
+
+  signUp(){
+    try{
+      FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email.text, password: _pass.text);
+      Navigator.pop(context);
+
+    }on FirebaseException catch(e){
+      print(e.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +62,15 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   AppLargeText(text: 'Sign Up'),
                   const SizedBox(height: 20),
-                  RoundedInputField(hintText: 'User Name', onChanged: (value) {}),
-                  RoundedInputField(hintText: 'Your Email', icon: Icons.email, onChanged: (value) {}),
-                  RoundedInputField(hintText: 'Phone', icon: Icons.phone, onChanged: (value) {}),
-                  RoundedPasswordField(onChanged: (value) {}),
+                  RoundedInputField(hintText: 'User Name', onChanged: (value) {}, controller: _username,),
+                  RoundedInputField(hintText: 'Your Email', icon: Icons.email, onChanged: (value) {}, controller: _email,),
+                  RoundedInputField(hintText: 'Phone', icon: Icons.phone, onChanged: (value) {}, controller: _phone,),
+                  RoundedPasswordField(onChanged: (value) {}, controller: _pass,),
                   DefaultButton(
                     buttonText: 'Sign Up',
-                    press: () {},
+                    press: () {
+                      signUp();
+                    },
                   ),
                   const SizedBox(height: 20),
                   Row(

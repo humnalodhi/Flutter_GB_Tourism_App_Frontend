@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "584654954308",
+    "project_id": "gb-tour",
+    "storage_bucket": "gb-tour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584654954308:android:e2ce464dde69bebf0b8111",
+        "android_client_info": {
+          "package_name": "com.example.gb_tour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584654954308-f6susg228bj9kbnark8c5e6p3rqr2gh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKowua0LJ6u0oSKYDNzGVzs2F2TibmgNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584654954308-f6susg228bj9kbnark8c5e6p3rqr2gh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

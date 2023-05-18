@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gb_tour/View/Screens/Login.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/main_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/notifications_page.dart';
@@ -8,8 +10,15 @@ import 'package:gb_tour/Widgets/app_large_text.dart';
 
 import '../../Widgets/app_text.dart';
 
-class DrawerScreen extends StatelessWidget {
-  DrawerScreen({Key? key}) : super(key: key);
+class DrawerScreen extends StatefulWidget {
+  const DrawerScreen({Key? key}) : super(key: key);
+
+
+  @override
+  State<DrawerScreen> createState() => _DrawerScreenState();
+}
+
+class _DrawerScreenState extends State<DrawerScreen> {
 
   final List drawerMenuListname = [
     {
@@ -122,7 +131,7 @@ class DrawerScreen extends StatelessWidget {
         ),
       ),
       "title": "Logout",
-      "action_id": 6,
+      "action_id": 7,
     },
   ];
 
@@ -215,6 +224,18 @@ class DrawerScreen extends StatelessWidget {
                         ),
                       );
                     }
+                    else if (sideMenuData['action_id'] == 7) {
+                      try{
+                        FirebaseAuth.instance.signOut();
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      }on FirebaseAuthException catch(e){
+                        print(e.toString());
+                      }
+                    }
                   },
                 );
               }).toList(),
@@ -225,3 +246,4 @@ class DrawerScreen extends StatelessWidget {
     );
   }
 }
+

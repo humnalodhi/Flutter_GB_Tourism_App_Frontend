@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
@@ -8,8 +9,13 @@ import 'View/Screens/Login.dart';
 import 'View/Screens/NavPages/main_page.dart';
 import 'View/Screens/destinations.dart';
 import 'View/Screens/sign_up.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -32,7 +38,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.indigo,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: SignupScreen(),
+      home: LoginScreen(),
     );
   }
 }

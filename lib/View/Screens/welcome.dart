@@ -54,7 +54,7 @@ class _WelcomeState extends State<Welcome> {
                   itemBuilder: (_, index) {
                     return Padding(
                       padding:
-                          const EdgeInsets.only(top: 50, left: 30, right: 30),
+                          const EdgeInsets.only(top: 40, left: 35, right: 35),
                       child: Column(
                         children: [
                           Image.asset(

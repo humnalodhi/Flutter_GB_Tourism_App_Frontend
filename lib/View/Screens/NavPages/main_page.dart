@@ -5,6 +5,7 @@ import 'package:gb_tour/View/Screens/NavPages/fav_items_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/my_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/notifications_page.dart';
+import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _MainPageState extends State<MainPage> {
     BookedPage(),
     FavItemsPage(),
     NotificationPage(),
-    MyPage(),
+    ProfilePage(),
   ];
   int currentIndex = 0;
   void onTap(int index){
