@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.indigo,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: LoginScreen(),
+      home: AnimatedSplash(),
     );
   }
 }
