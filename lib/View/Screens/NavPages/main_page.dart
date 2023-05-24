@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/NavPages/booked_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/fav_items_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
-import 'package:gb_tour/View/Screens/NavPages/my_page.dart';
 import 'package:gb_tour/View/Screens/NavPages/notifications_page.dart';
 import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
 
@@ -51,7 +50,7 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(label: 'Booked', icon: Icon(Icons.check_circle)),
           BottomNavigationBarItem(label: 'Favorites', icon: Icon(Icons.favorite)),
           BottomNavigationBarItem(label: 'Notifications', icon: Icon(Icons.notifications)),
-          BottomNavigationBarItem(label: 'Profile', icon: Icon(Icons.person_rounded)),
+          BottomNavigationBarItem(label: 'Chat', icon: Icon(Icons.chat)),
         ],
       ),
     );

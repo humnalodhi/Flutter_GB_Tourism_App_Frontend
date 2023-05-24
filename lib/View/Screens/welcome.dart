@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/Login.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
-import 'package:gb_tour/View/Screens/NavPages/main_page.dart';
 import 'package:gb_tour/View/Screens/onboardingContent.dart';
 import 'package:gb_tour/Widgets/app_text.dart';
 import 'package:gb_tour/Widgets/default_button.dart';

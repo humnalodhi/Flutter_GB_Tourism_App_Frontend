@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
-import 'package:gb_tour/View/Screens/places.dart';
+import 'package:gb_tour/View/Screens/room_detail_page.dart';
 
 import '../../Widgets/app_large_text.dart';
 import '../../Widgets/app_text.dart';
+import 'Profile/profile_page.dart';
 import 'drawer.dart';
+import 'hotel_detail_page.dart';
 
-class PopularDestinations extends StatelessWidget {
-  const PopularDestinations({Key? key}) : super(key: key);
+class Rooms extends StatefulWidget {
+  const Rooms({Key? key}) : super(key: key);
 
+  @override
+  State<Rooms> createState() => _RoomsState();
+}
+
+class _RoomsState extends State<Rooms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,44 +24,33 @@ class PopularDestinations extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Row(
           children: [
+            Icon(
+              Icons.arrow_back,
+              color: Colors.black87,
+            ),
             Container(
-              margin: EdgeInsets.only(left: 70),
+              margin: EdgeInsets.only(left: 130),
               child: AppLargeText(
-                text: 'Gilgit Baltistan',
+                text: 'Rooms',
                 size: 20,
               ),
-            ),
-            Spacer(),
-            GestureDetector(
-              child: CircleAvatar(
-                radius: 18,
-                backgroundColor: Colors.grey,
-                child: Icon(
-                  Icons.person_rounded,
-                  color: Colors.black87,
-                ),
-              ),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
-              },
             ),
           ],
         ),
         iconTheme: IconThemeData(color: Colors.black87),
       ),
-      drawer: DrawerScreen(),
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemCount: 8,
           itemBuilder: (context, index){
             return GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Places()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> RoomDetailPage()));
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 padding: const EdgeInsets.all(12),
-                height: 220,
+                height: 180,
                 width: 160,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -76,31 +71,18 @@ class PopularDestinations extends StatelessWidget {
                       ),
                       alignment: Alignment.topRight,
                     ),
-                    SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.location_on_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                        Container(
-                          child: AppText(
-                            text: 'City Name',
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                      ],
-                    ),
                     Spacer(),
+                    Container(
+                      child: AppText(
+                        text: 'Room Name',
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      alignment: Alignment.bottomLeft,
+                    ),
+                    SizedBox(
+                      height: 8,
+                    )
                   ],
                 ),
               ),

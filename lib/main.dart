@@ -1,14 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
-import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
-import 'package:gb_tour/View/Screens/animated_splash.dart';
-import 'package:gb_tour/View/Screens/detail_page.dart';
-import 'package:gb_tour/View/Screens/welcome.dart';
-import 'View/Screens/Login.dart';
-import 'View/Screens/NavPages/main_page.dart';
-import 'View/Screens/destinations.dart';
-import 'View/Screens/sign_up.dart';
+import 'package:gb_tour/View/Screens/CSPNavPages/csp_home_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -38,7 +30,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.indigo,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: AnimatedSplash(),
+      home: CSPHomePage(),
     );
   }
 }

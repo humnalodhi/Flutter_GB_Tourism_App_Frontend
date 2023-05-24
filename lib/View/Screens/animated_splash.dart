@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/welcome.dart';
 
 class AnimatedSplash extends StatefulWidget {

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
-import 'package:gb_tour/View/Screens/NavPages/main_page.dart';
 import 'package:gb_tour/View/Screens/reset_pass.dart';
 import 'package:gb_tour/View/Screens/sign_up.dart';
 import 'package:gb_tour/Widgets/app_large_text.dart';
@@ -26,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Login(){
     try{
       FirebaseAuth.instance.signInWithEmailAndPassword(email: _email.text, password: _pass.text);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MainPage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomePage()));
 
     }on FirebaseException catch(e){
       print(e.toString());

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_tour/Widgets/default_button.dart';
-import 'package:gb_tour/Widgets/rounded_input_field.dart';
 import 'package:gb_tour/Widgets/rounded_input_field2.dart';
 
 import '../../../Widgets/app_large_text.dart';

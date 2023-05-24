@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
-import 'package:gb_tour/View/Screens/places.dart';
+import 'package:gb_tour/View/Screens/places_detail_page.dart';
 
 import '../../Widgets/app_large_text.dart';
 import '../../Widgets/app_text.dart';
+import 'Profile/profile_page.dart';
 import 'drawer.dart';
 
-class PopularDestinations extends StatelessWidget {
-  const PopularDestinations({Key? key}) : super(key: key);
+class Places extends StatelessWidget {
+  const Places({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class PopularDestinations extends StatelessWidget {
         title: Row(
           children: [
             Container(
-              margin: EdgeInsets.only(left: 70),
+              margin: EdgeInsets.symmetric(horizontal: 80),
               child: AppLargeText(
-                text: 'Gilgit Baltistan',
+                text: 'City Name',
                 size: 20,
               ),
             ),
@@ -50,12 +50,12 @@ class PopularDestinations extends StatelessWidget {
           itemBuilder: (context, index){
             return GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Places()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>PlacesDetailPage()));
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 padding: const EdgeInsets.all(12),
-                height: 220,
+                height: 180,
                 width: 160,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -76,31 +76,18 @@ class PopularDestinations extends StatelessWidget {
                       ),
                       alignment: Alignment.topRight,
                     ),
-                    SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.location_on_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                        Container(
-                          child: AppText(
-                            text: 'City Name',
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                      ],
-                    ),
                     Spacer(),
+                    Container(
+                      child: AppText(
+                        text: 'Place Name',
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      alignment: Alignment.bottomLeft,
+                    ),
+                    SizedBox(
+                      height: 8,
+                    )
                   ],
                 ),
               ),

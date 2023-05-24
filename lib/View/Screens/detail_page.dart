@@ -1,10 +1,9 @@
+import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:gb_tour/Widgets/app_large_text.dart';
 import 'package:gb_tour/Widgets/app_text.dart';
-
-import 'onboardingContent.dart';
+import '../../Widgets/default_button.dart';
 import 'onboarding_hotel_images.dart';
 
 class DetailPage extends StatefulWidget {
@@ -39,7 +38,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.maxFinite,
           height: double.maxFinite,
           child: Stack(
@@ -47,40 +46,40 @@ class _DetailPageState extends State<DetailPage> {
               Positioned(
                 left: 0,
                 right: 0,
-                child: Expanded(
-                  child: PageView.builder(
-                      controller: _controller,
-                      itemCount: hotelImages.length,
-                      onPageChanged: (int index) {
-                        setState(() {
-                          current_index = index;
-                        });
-                      },
-                      itemBuilder: (_, index) {
-                        return Container(
-                          width: double.maxFinite,
-                          height: 300,
-                          child: Column(
-                              children: [
-                                Image.asset(
-                                  hotelImages[index].hotelImage,
-                                  //height: 300,
-                                  fit: BoxFit.cover,
-                                ),
-                              ],
-                          ),
-                        );
-                      }),
-                ),
+                child: PageView.builder(
+                    controller: _controller,
+                    itemCount: hotelImages.length,
+                    onPageChanged: (int index) {
+                      setState(() {
+                        current_index = index;
+                      });
+                    },
+                    itemBuilder: (_, index) {
+                      return Image.asset(
+                        hotelImages[index].hotelImage,
+                        //height: 300,
+                        fit: BoxFit.cover,
+                      );
+                    }),
               ),
-              Positioned(
+              const Positioned(
                 left: 20,
                   top: 40,
                   child: Row(
-                children: [
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.menu), color: Colors.white, iconSize: 28),
-                ],
-              ),
+                    children: [
+                      Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 280,
+                      ),
+                      Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
               ),
               Positioned(
                 child: Container(
@@ -98,138 +97,119 @@ class _DetailPageState extends State<DetailPage> {
               Positioned(
                 top: 300,
                 child: Container(
-                  padding: EdgeInsets.only(top: 30, right: 20, left: 20),
-                  width: MediaQuery.of(context).size.width,
-                  height: 550,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppLargeText(
+                                text: 'Hotel Name',
+                                size: 36,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 3),
+                          Row(
+                            children: [
+                              Icon(Icons.location_on,
+                                  size: 16, color: Colors.indigo),
+                              AppText(
+                                  text: 'Location',
+                                  size: 18,
+                                  color: Colors.indigo),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          AppLargeText(text: 'Description'),
+                          AppText(
+                              text:
+                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          AppLargeText(text: 'Facilities'),
+                          BulletedList(
+                              bullet: Padding(
+                                padding: const EdgeInsets.all(2),
+                                child: Icon(
+                                  Icons.check_circle,
+                                  size: 24,
+                                  color: Colors.indigo,
+                                ),
+                              ),
+                              listItems: [
+                                AppText(text: "Car Parking"),
+                                AppText(text: "Car Parking"),
+                                AppText(text: "Car Parking"),
+                                AppText(text: "Car Parking"),
+                                AppText(text: "Car Parking"),
+                              ]),
+                          // Container(
+                          //   //margin: EdgeInsets.only(left: 24),
+                          //   child: Row(
+                          //     children: [
+                          //       AppLargeText(text: 'Facilities'),
+                          //     ],
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 15,
+                          // ),
+                          // Container(
+                          //   height: 120,
+                          //   width: double.maxFinite,
+                          //   //margin: const EdgeInsets.only(left: 20),
+                          //   child: ListView.builder(
+                          //       scrollDirection: Axis.horizontal,
+                          //       itemCount: 4,
+                          //       itemBuilder: (_, index){
+                          //         return Column(
+                          //           children: [
+                          //             Container(
+                          //               margin: const EdgeInsets.symmetric(horizontal: 12),
+                          //               //padding: const EdgeInsets.all(20),
+                          //               height: 70,
+                          //               width: 70,
+                          //               decoration: BoxDecoration(
+                          //                 borderRadius: BorderRadius.circular(20),
+                          //                 color: Color(0xFFCCEFE0),
+                          //                 image: DecorationImage(
+                          //                   image: AssetImage("lib/assets/" +images.keys.elementAt(index)),
+                          //                   fit: BoxFit.cover,
+                          //                 ),
+                          //               ),
+                          //             ),
+                          //             SizedBox(
+                          //               height: 4,
+                          //             ),
+                          //             Container(
+                          //               child: AppText(text: images.values.elementAt(index),
+                          //                 size: 14,
+                          //               ),
+                          //             ),
+                          //           ],
+                          //         );
+                          //       }
+                          //   ),
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          AppLargeText(text: 'Hunza', size: 36,),
-                          AppLargeText(text: '\$ 250', size: 32,),
-                        ],
-                      ),
-                      SizedBox(height: 3),
-                      Row(
-                        children: [
-                          Icon(Icons.location_on, size: 16,color: Colors.indigo),
-                          AppText(text: 'Gilgit-Baltistan', size: 18, color: Colors.indigo),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          RatingBar.builder(
-                            initialRating: 0,
-                            minRating: 1,
-                            allowHalfRating: true,
-                            unratedColor: Colors.grey,
-                            itemCount: 5,
-                            itemSize: 24,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 1),
-                            updateOnDrag: true,
-                            itemBuilder: (context, index)=> Icon(Icons.star, color: Colors.amber),
-                            onRatingUpdate: (ratingval){
-                              setState(() {
-                                rating = ratingval;
-                              });
-                            },
-                          ),
-                          Text('$rating', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.amber),),
-
-                        ],
-                      ),
-                      SizedBox(height: 12,),
-                      AppLargeText(text: 'Description'),
-                      AppText(text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
-                      SizedBox(height: 10,),
-                      // Container(
-                      //   //margin: EdgeInsets.only(left: 24),
-                      //   child: Row(
-                      //     children: [
-                      //       AppLargeText(text: 'Facilities'),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: 15,
-                      // ),
-                      // Container(
-                      //   height: 120,
-                      //   width: double.maxFinite,
-                      //   //margin: const EdgeInsets.only(left: 20),
-                      //   child: ListView.builder(
-                      //       scrollDirection: Axis.horizontal,
-                      //       itemCount: 4,
-                      //       itemBuilder: (_, index){
-                      //         return Column(
-                      //           children: [
-                      //             Container(
-                      //               margin: const EdgeInsets.symmetric(horizontal: 12),
-                      //               //padding: const EdgeInsets.all(20),
-                      //               height: 70,
-                      //               width: 70,
-                      //               decoration: BoxDecoration(
-                      //                 borderRadius: BorderRadius.circular(20),
-                      //                 color: Color(0xFFCCEFE0),
-                      //                 image: DecorationImage(
-                      //                   image: AssetImage("lib/assets/" +images.keys.elementAt(index)),
-                      //                   fit: BoxFit.cover,
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             SizedBox(
-                      //               height: 4,
-                      //             ),
-                      //             Container(
-                      //               child: AppText(text: images.values.elementAt(index),
-                      //                 size: 14,
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         );
-                      //       }
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                ),
               ),
-              ),
-              Positioned(
-                bottom: 0,
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        height: 70,
-                        width: 70,
-                        child: Icon(Icons.favorite),
-                        decoration: BoxDecoration(
-                          border: Border.all( color: Colors.black87),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      Container(
-                        width: 310,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.indigo,
-                        ),
-                        child: Center(child: AppLargeText(color: Colors.white, text: 'Book Now',)),
-                      ),
-                    ],
-                  ),
-              ),
+              DefaultButton(buttonText: "Explore Rooms")
             ],
           ),
         ),

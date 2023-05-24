@@ -40,6 +40,8 @@ dependencies:
   google_fonts: ^4.0.3
   firebase_auth: ^4.6.1
   firebase_core: ^2.13.0
+  bulleted_list: ^0.0.1+0.1a
+  image_picker: ^0.8.7+5
 
 dev_dependencies:
   flutter_test:

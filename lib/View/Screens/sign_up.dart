@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../Widgets/app_large_text.dart';
 import '../../Widgets/app_text.dart';
 import '../../Widgets/default_button.dart';

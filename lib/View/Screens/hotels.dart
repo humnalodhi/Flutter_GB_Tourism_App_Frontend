@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
-import 'package:gb_tour/View/Screens/places.dart';
+import 'package:gb_tour/View/Screens/hotel_detail_page.dart';
+import 'package:gb_tour/Widgets/app_text.dart';
 
 import '../../Widgets/app_large_text.dart';
-import '../../Widgets/app_text.dart';
+import 'Profile/profile_page.dart';
 import 'drawer.dart';
 
-class PopularDestinations extends StatelessWidget {
-  const PopularDestinations({Key? key}) : super(key: key);
+class Hotels extends StatefulWidget {
+  const Hotels({Key? key}) : super(key: key);
 
+  @override
+  State<Hotels> createState() => _HotelsState();
+}
+
+class _HotelsState extends State<Hotels> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +24,9 @@ class PopularDestinations extends StatelessWidget {
         title: Row(
           children: [
             Container(
-              margin: EdgeInsets.only(left: 70),
+              margin: EdgeInsets.symmetric(horizontal: 105),
               child: AppLargeText(
-                text: 'Gilgit Baltistan',
+                text: 'Hotels',
                 size: 20,
               ),
             ),
@@ -50,12 +55,12 @@ class PopularDestinations extends StatelessWidget {
           itemBuilder: (context, index){
             return GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Places()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> HotelDetailPage()));
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 padding: const EdgeInsets.all(12),
-                height: 220,
+                height: 180,
                 width: 160,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -76,31 +81,18 @@ class PopularDestinations extends StatelessWidget {
                       ),
                       alignment: Alignment.topRight,
                     ),
-                    SizedBox(
-                      height: 60,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.location_on_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                        Container(
-                          child: AppText(
-                            text: 'City Name',
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          alignment: Alignment.center,
-                        ),
-                      ],
-                    ),
                     Spacer(),
+                    Container(
+                      child: AppText(
+                        text: 'Hotel Name',
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      alignment: Alignment.bottomLeft,
+                    ),
+                    SizedBox(
+                      height: 8,
+                    )
                   ],
                 ),
               ),
