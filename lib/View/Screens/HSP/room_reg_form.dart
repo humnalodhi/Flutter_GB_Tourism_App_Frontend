@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/hotel_images_picker.dart';
-import 'package:gb_tour/View/Screens/room_reg_form.dart';
-import 'package:gb_tour/Widgets/default_button.dart';
-import '../../Widgets/app_large_text.dart';
+import 'package:gb_tour/View/Screens/HSP/room_images_picker.dart';
+import '../../../Widgets/app_large_text.dart';
+import '../../../Widgets/default_button.dart';
 
-class HSPServiceForm extends StatefulWidget {
-  const HSPServiceForm({Key? key}) : super(key: key);
+class RoomRegForm extends StatefulWidget {
+  const RoomRegForm({Key? key}) : super(key: key);
 
   @override
-  State<HSPServiceForm> createState() => _HSPServiceFormState();
+  State<RoomRegForm> createState() => _RoomRegFormState();
 }
 
-class _HSPServiceFormState extends State<HSPServiceForm> {
+class _RoomRegFormState extends State<RoomRegForm> {
   List dropDownListData = [
     {"title": "Hunza", "value": "1"},
     {"title": "Skardu", "value": "2"},
@@ -29,8 +28,6 @@ class _HSPServiceFormState extends State<HSPServiceForm> {
     CheckBoxModel(title: "CheckBox 2"),
     CheckBoxModel(title: "CheckBox 3"),
   ];
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +35,9 @@ class _HSPServiceFormState extends State<HSPServiceForm> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
-          margin: EdgeInsets.only(left: 45),
+          margin: EdgeInsets.only(left: 40),
           child: AppLargeText(
-            text: 'Hotel Registration Form',
+            text: 'Room Registration Form',
             size: 20,
           ),
         ),
@@ -52,18 +49,34 @@ class _HSPServiceFormState extends State<HSPServiceForm> {
           child: Column(
             children: [
               Align(
-                alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Hotel Name", size: 20, )),
+                  alignment: Alignment.topLeft,
+                  child: AppLargeText(text: "Room Name", size: 20, )),
               SizedBox(
                 height: 8,
               ),
               TextField(
                 decoration: InputDecoration(
-                  filled: true,
-                  hintText: "Enter Hotel Name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                  )
+                    filled: true,
+                    hintText: "Enter Room Name",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)
+                    )
+                ),
+              ),
+              SizedBox(height: 20,),
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: AppLargeText(text: "Room Number", size: 20, )),
+              SizedBox(
+                height: 8,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    filled: true,
+                    hintText: "Enter Room Number",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)
+                    )
                 ),
               ),
               SizedBox(height: 20,),
@@ -126,7 +139,7 @@ class _HSPServiceFormState extends State<HSPServiceForm> {
               ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Location", size: 20, )),
+                  child: AppLargeText(text: "Hotel Location", size: 20, )),
               SizedBox(
                 height: 8,
               ),
@@ -144,7 +157,25 @@ class _HSPServiceFormState extends State<HSPServiceForm> {
               ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Facilities", size: 20, )),
+                  child: AppLargeText(text: "Room Price/Day", size: 20, )),
+              SizedBox(
+                height: 8,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    filled: true,
+                    hintText: "Enter Room Price",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)
+                    )
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: AppLargeText(text: "Room Services", size: 20, )),
               SizedBox(
                 height: 8,
               ),
@@ -165,10 +196,10 @@ class _HSPServiceFormState extends State<HSPServiceForm> {
                       onChanged: (value) => onItemClicked(item),
                     ),
                     title: AppLargeText(text: item.title, size: 18),
-                    ),
-                  ).toList(),
+                  ),
+              ).toList(),
               DefaultButton(buttonText: "Next", press: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HotelImagesPicker()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>RoomImagesPicker()));
               },),
             ],
           ),

@@ -2,19 +2,26 @@ import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../Widgets/app_large_text.dart';
-import '../../Widgets/app_text.dart';
-import '../../Widgets/default_button.dart';
-import 'onboarding_hotel_images.dart';
+import '../../../Widgets/app_large_text.dart';
+import '../../../Widgets/app_text.dart';
+import '../../../Widgets/default_button.dart';
+import '../onboarding_hotel_images.dart';
 
-class RoomDetailPage extends StatefulWidget {
-  const RoomDetailPage({Key? key}) : super(key: key);
+class CSPDetailPage extends StatefulWidget {
+  const CSPDetailPage({Key? key}) : super(key: key);
 
   @override
-  State<RoomDetailPage> createState() => _RoomDetailPageState();
+  State<CSPDetailPage> createState() => _CSPDetailPageState();
 }
 
-class _RoomDetailPageState extends State<RoomDetailPage> {
+class _CSPDetailPageState extends State<CSPDetailPage> {
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
   late PageController _controller;
   int current_index = 0;
   var images = {
@@ -58,20 +65,31 @@ class _RoomDetailPageState extends State<RoomDetailPage> {
                     fit: BoxFit.cover,
                   );
                 }),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(18),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.black87,
+                    ),
                   ),
                   SizedBox(
                     width: 320,
                   ),
-                  Icon(
-                    Icons.favorite_border,
-                    color: Colors.white,
+                  GestureDetector(
+
+                    child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: Colors.red,
+                      size: 25,
+                    ),
+                    onTap: (){
+                      toggleFavorite();
+                    },
                   ),
                 ],
               ),
@@ -112,12 +130,30 @@ class _RoomDetailPageState extends State<RoomDetailPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             AppLargeText(
-                              text: 'Room Name',
+                              text: 'Car Name',
                               size: 36,
                             ),
                             AppLargeText(text: "12000/Day", size: 22),
                           ],
                         ),
+                        const SizedBox(height: 3),
+                        Row(
+                          children: [
+                            const Icon(Icons.location_on,
+                                size: 16, color: Colors.indigo),
+                            AppText(
+                                text: 'Location',
+                                size: 18,
+                                color: Colors.indigo),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        AppLargeText(text: 'Car Model'),
+                        AppText(
+                            text:
+                            "Lorem Ipsum is simply dummy text."),
                         const SizedBox(
                           height: 20,
                         ),
@@ -145,12 +181,6 @@ class _RoomDetailPageState extends State<RoomDetailPage> {
                               AppText(text: "Service 4"),
                               AppText(text: "Service 5"),
                             ]),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
                       ],
                     ),
                   ),
@@ -160,8 +190,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> {
             Positioned(
                 left: 25,
                 bottom: 0,
-                child: DefaultButton(buttonText: "Book Now", press: (){
-                },))
+                child: DefaultButton(buttonText: "Book Now"))
           ],
         ),
       ),

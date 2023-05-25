@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/Login.dart';
-import 'package:gb_tour/View/Screens/NavPages/fav_items_page.dart';
-import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
 import 'package:gb_tour/View/Screens/switch_modules.dart';
 import 'package:gb_tour/Widgets/app_large_text.dart';
 
 import '../../Widgets/app_text.dart';
+import 'Tourist/fav_items_page.dart';
+import 'Tourist/home_page.dart';
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class DrawerScreen extends StatefulWidget {
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
-
+  bool isFavorite = false;
   final List drawerMenuListname = [
     {
       "leading": Container(

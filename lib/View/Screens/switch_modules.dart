@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/CSPNavPages/csp_home_page.dart';
-import 'package:gb_tour/View/Screens/CSPNavPages/csp_main_page.dart';
-import 'package:gb_tour/View/Screens/HSPNavPages/hsp_home_page.dart';
-import 'package:gb_tour/View/Screens/HSPNavPages/hsp_main_page.dart';
-import 'package:gb_tour/View/Screens/NavPages/main_page.dart';
 import 'package:gb_tour/Widgets/default_button.dart';
+
+import 'HSP/hsp_home_page.dart';
+import 'Tourist/home_page.dart';
+import 'CSP/csp_home_page.dart';
 
 class SwitchModules extends StatelessWidget {
   const SwitchModules({Key? key}) : super(key: key);
@@ -18,13 +17,13 @@ class SwitchModules extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            DefaultButton(buttonText: "Switch as Tourist", press: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MainPage()));
+            DefaultButton(buttonText: "Switch to Tourist Module", press: (){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomePage()));
             },),
-            DefaultButton(buttonText: "Switch to HSP", press: (){
+            DefaultButton(buttonText: "Switch to HSP Module", press: (){
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HSPHomePage()));
             },),
-            DefaultButton(buttonText: "Switch to CSP", press: (){
+            DefaultButton(buttonText: "Switch to CSP Module", press: (){
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>CSPHomePage()));
             },),
           ],

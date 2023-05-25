@@ -1,25 +1,23 @@
-import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/room_reg_form.dart';
-import 'package:gb_tour/Widgets/app_text.dart';
-import 'package:gb_tour/Widgets/default_button.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../Widgets/app_large_text.dart';
+import '../../../Widgets/app_large_text.dart';
+import '../../../Widgets/app_text.dart';
+import '../../../Widgets/default_button.dart';
+import 'hsp_home_page.dart';
 
-class HotelImagesPicker extends StatefulWidget {
-  const HotelImagesPicker({Key? key}) : super(key: key);
+class RoomImagesPicker extends StatefulWidget {
+  const RoomImagesPicker({Key? key}) : super(key: key);
 
   @override
-  State<HotelImagesPicker> createState() => _HotelImagesPickerState();
+  State<RoomImagesPicker> createState() => _RoomImagesPickerState();
 }
 
-class _HotelImagesPickerState extends State<HotelImagesPicker> {
+class _RoomImagesPickerState extends State<RoomImagesPicker> {
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _imageFileList = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +27,7 @@ class _HotelImagesPickerState extends State<HotelImagesPicker> {
         title: Container(
           margin: EdgeInsets.only(left: 50),
           child: AppLargeText(
-            text: 'Select Hotel Images',
+            text: 'Select Room Images',
             size: 20,
           ),
         ),
@@ -91,18 +89,17 @@ class _HotelImagesPickerState extends State<HotelImagesPicker> {
                     }),
               ),
             ),
-            DefaultButton(buttonText: "Done", press: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RoomRegForm()));
+            DefaultButton(buttonText: "Post", press: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>HSPHomePage()));
             },),
           ],
         ),
       ),
     );
   }
-
   void imageSelect() async {
     final XFile? selectedImage =
-        await _picker.pickImage(source: ImageSource.gallery);
+    await _picker.pickImage(source: ImageSource.gallery);
     if (selectedImage!.path.isNotEmpty) {
       _imageFileList!.add(selectedImage);
     }

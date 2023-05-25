@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/CSPNavPages/csp_home_page.dart';
+import 'package:gb_tour/View/Screens/animated_splash.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.indigo,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: CSPHomePage(),
+      home: const AnimatedSplash(),
     );
   }
 }

@@ -23,7 +23,7 @@ class _AnimatedSplashState extends State<AnimatedSplash> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.indigo,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,9 +37,9 @@ class _AnimatedSplashState extends State<AnimatedSplash> {
             //   ),
             // ),
             Container(
-              height: 100,
-              width: 100,
-              color: Colors.white,
+              height: 130,
+              width: 130,
+              color: Colors.indigo,
               child: Image.asset('lib/assets/Gilgit_Logo.png'),
             ),
           ],

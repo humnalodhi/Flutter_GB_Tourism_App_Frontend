@@ -1,13 +1,11 @@
-import 'dart:html';
+import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/csp_service_form.dart';
+import 'package:gb_tour/View/Screens/CSP/csp_home_page.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../Widgets/app_large_text.dart';
-import '../../Widgets/app_text.dart';
-import '../../Widgets/default_button.dart';
+import '../../../Widgets/app_large_text.dart';
+import '../../../Widgets/app_text.dart';
+import '../../../Widgets/default_button.dart';
 
 class CarImagesPicker extends StatefulWidget {
   const CarImagesPicker({Key? key}) : super(key: key);
@@ -26,7 +24,7 @@ class _CarImagesPickerState extends State<CarImagesPicker> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
-          margin: EdgeInsets.only(left: 50),
+          margin: const EdgeInsets.only(left: 50),
           child: AppLargeText(
             text: 'Select Car Images',
             size: 20,
@@ -55,7 +53,7 @@ class _CarImagesPickerState extends State<CarImagesPicker> {
                 padding: const EdgeInsets.all(8.0),
                 child: GridView.builder(
                     itemCount: _imageFileList!.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3),
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
@@ -64,10 +62,10 @@ class _CarImagesPickerState extends State<CarImagesPicker> {
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              // Image.file(
-                              //   File(_imageFileList![index].path),
-                              //   fit: BoxFit.cover,
-                              // ),
+                              Image.file(
+                                File(_imageFileList![index].path),
+                                fit: BoxFit.cover,
+                              ),
                               Positioned(
                                 right: 4,
                                 top: 4,
@@ -80,7 +78,7 @@ class _CarImagesPickerState extends State<CarImagesPicker> {
                                       setState(() {});
                                     },
                                   ),
-                                  color: Color.fromRGBO(255, 255, 244, 0.7),
+                                  color: const Color.fromRGBO(255, 255, 244, 0.7),
                                 ),
                               ),
                             ],
@@ -91,7 +89,7 @@ class _CarImagesPickerState extends State<CarImagesPicker> {
               ),
             ),
             DefaultButton(buttonText: "Post", press: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>CSPServiceForm()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>CSPHomePage()));
             },),
           ],
         ),

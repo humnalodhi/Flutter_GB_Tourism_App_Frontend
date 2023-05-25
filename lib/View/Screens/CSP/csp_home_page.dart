@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/csp_service_form.dart';
-import '../../Widgets/app_large_text.dart';
-import '../../Widgets/app_text.dart';
-import '../../Widgets/default_button.dart';
-import 'drawer.dart';
+import 'package:gb_tour/View/Screens/CSP/csp_service_form.dart';
+
+import '../../../Widgets/app_large_text.dart';
+import '../../../Widgets/app_text.dart';
+import '../../../Widgets/default_button.dart';
+import '../Profile/profile_page.dart';
+import '../drawer.dart';
 
 class CSPHomePage extends StatefulWidget {
   const CSPHomePage({Key? key}) : super(key: key);
@@ -44,7 +46,13 @@ class _CSPHomePageState extends State<CSPHomePage> {
                   size: 20,
                 ),
                 Spacer(),
-                Icon(Icons.person_rounded)
+                CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+                        },
+                        child: Icon(Icons.person_rounded, color: Colors.black87)))
               ],
             )),
         iconTheme: IconThemeData(color: Colors.black87),
@@ -61,11 +69,11 @@ class _CSPHomePageState extends State<CSPHomePage> {
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
-                itemCount: 10,
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 8),
+                    margin:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     padding: const EdgeInsets.all(10),
                     height: 220,
                     width: 160,
@@ -83,13 +91,15 @@ class _CSPHomePageState extends State<CSPHomePage> {
                         PopupMenuButton(
                           itemBuilder: (BuildContext context) => [
                             PopupMenuItem(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 15),
                               child: AppText(
                                 text: "Update",
                               ),
                             ),
                             PopupMenuItem(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 15),
                               child: AppText(
                                 text: "Delete",
                               ),
@@ -148,10 +158,11 @@ class _CSPHomePageState extends State<CSPHomePage> {
           Positioned(
               bottom: 0,
               left: 20,
-              child: DefaultButton(buttonText: "Create a Service", press: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> CSPServiceForm()));
-
-              })),
+              child: DefaultButton(
+                  buttonText: "Create a Service",
+                  press: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>CSPServiceForm()));
+                  })),
         ],
       ),
     );

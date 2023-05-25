@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/cars.dart';
-import 'package:gb_tour/View/Screens/csp_detail_page.dart';
-import 'package:gb_tour/View/Screens/destinations.dart';
-import 'package:gb_tour/View/Screens/hotel_detail_page.dart';
-import 'package:gb_tour/View/Screens/hotels.dart';
-import 'package:gb_tour/View/Screens/places_detail_page.dart';
+import 'package:gb_tour/View/Screens/CSP/cars.dart';
+import 'package:gb_tour/View/Screens/Tourist/csp_detail_page.dart';
+import 'package:gb_tour/View/Screens/Tourist/destinations.dart';
+import 'package:gb_tour/View/Screens/Tourist/hotel_detail_page.dart';
+import 'package:gb_tour/View/Screens/HSP/hotels.dart';
+import 'package:gb_tour/View/Screens/Tourist/places_detail_page.dart';
 import 'package:gb_tour/Widgets/app_large_text.dart';
 import 'package:gb_tour/Widgets/app_text.dart';
 import '../Profile/profile_page.dart';
-import '../attractions.dart';
 import '../drawer.dart';
-import '../places.dart';
+import 'filter_screen.dart';
+import 'places.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,6 +21,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
+
   double Rating = 0;
   var images = {
     "car_icon.png": "Car",
@@ -33,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   Cars(),
   Hotels(),
   PopularDestinations(),
-  Attractions(),
+  Places(),
 
   ];
 
@@ -111,42 +119,47 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.indigo.withOpacity(0.9),
                       )),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 25),
-                  padding: EdgeInsets.all(8),
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.indigo,
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(0, 1),
-                        blurRadius: 5,
-                        color: Colors.grey.withOpacity(0.5),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.grid_on,
-                        size: 40,
-                        color: Colors.white,
-                      ),
-                      AppLargeText(
-                        text: 'Find your',
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      AppLargeText(
-                        text: 'perfect place',
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                    ],
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> FilterScreen()));
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 25),
+                    padding: EdgeInsets.all(8),
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.indigo,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, 1),
+                          blurRadius: 5,
+                          color: Colors.grey.withOpacity(0.5),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.grid_on,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        AppLargeText(
+                          text: 'Find your',
+                          size: 14,
+                          color: Colors.white,
+                        ),
+                        AppLargeText(
+                          text: 'perfect place',
+                          size: 14,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -310,12 +323,17 @@ class _HomePageState extends State<HomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                  alignment: Alignment.topRight,
+                                 alignment: Alignment.topRight,
+                                 child: GestureDetector(
+
+                                   child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+                                        color: Colors.red,
+                                        size: 25,
+                                    ),
+                                   onTap: (){
+                                     toggleFavorite();
+                                   },
+                                 ),
                                 ),
                                 SizedBox(
                                   height: 60,
@@ -405,11 +423,17 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: [
                                 Container(
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.white,
-                                  ),
                                   alignment: Alignment.topRight,
+                                  child: GestureDetector(
+
+                                    child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+                                      color: Colors.red,
+                                      size: 25,
+                                    ),
+                                    onTap: (){
+                                      toggleFavorite();
+                                    },
+                                  ),
                                 ),
                                 Spacer(),
                                 Container(
@@ -545,11 +569,17 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: [
                                 Container(
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.white,
-                                  ),
                                   alignment: Alignment.topRight,
+                                  child: GestureDetector(
+
+                                    child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+                                      color: Colors.red,
+                                      size: 25,
+                                    ),
+                                    onTap: (){
+                                      toggleFavorite();
+                                    },
+                                  ),
                                 ),
                                 Spacer(),
                                 Container(
@@ -686,12 +716,17 @@ class _HomePageState extends State<HomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
                                   alignment: Alignment.topRight,
+                                  child: GestureDetector(
+
+                                    child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+                                      color: Colors.red,
+                                      size: 25,
+                                    ),
+                                    onTap: (){
+                                      toggleFavorite();
+                                    },
+                                  ),
                                 ),
                                 Spacer(),
                                 Container(
@@ -730,4 +765,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
 }
+

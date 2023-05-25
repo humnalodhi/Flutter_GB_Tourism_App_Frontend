@@ -1,15 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/places_detail_page.dart';
+import 'package:gb_tour/View/Screens/Tourist/places_detail_page.dart';
 
-import '../../Widgets/app_large_text.dart';
-import '../../Widgets/app_text.dart';
-import 'Profile/profile_page.dart';
-import 'drawer.dart';
+import '../../../Widgets/app_large_text.dart';
+import '../../../Widgets/app_text.dart';
+import '../Profile/profile_page.dart';
+import '../drawer.dart';
 
-class Places extends StatelessWidget {
+class Places extends StatefulWidget {
   const Places({Key? key}) : super(key: key);
 
+  @override
+  State<Places> createState() => _PlacesState();
+}
+
+class _PlacesState extends State<Places> {
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,12 +81,17 @@ class Places extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      child: Icon(
-                        Icons.favorite_border,
-                        color: Colors.white,
-                        size: 25,
-                      ),
                       alignment: Alignment.topRight,
+                      child: GestureDetector(
+
+                        child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.red,
+                          size: 25,
+                        ),
+                        onTap: (){
+                          toggleFavorite();
+                        },
+                      ),
                     ),
                     Spacer(),
                     Container(

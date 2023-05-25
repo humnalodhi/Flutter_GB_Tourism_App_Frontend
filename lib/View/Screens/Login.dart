@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/reset_pass.dart';
 import 'package:gb_tour/View/Screens/sign_up.dart';
 import 'package:gb_tour/Widgets/app_large_text.dart';
@@ -10,6 +9,7 @@ import 'package:gb_tour/Widgets/app_text.dart';
 import '../../Widgets/default_button.dart';
 import '../../Widgets/rounded_input_field.dart';
 import '../../Widgets/rounded_pass_field.dart';
+import 'Tourist/home_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

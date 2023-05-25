@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/hsp_service_form.dart';
+import 'package:gb_tour/View/Screens/Profile/profile_page.dart';
+import 'package:gb_tour/View/Screens/HSP/hsp_service_form.dart';
 import 'package:gb_tour/Widgets/default_button.dart';
 
 import '../../../Widgets/app_large_text.dart';
@@ -45,9 +46,16 @@ class _HSPHomePageState extends State<HSPHomePage> {
                   size: 20,
                 ),
                 Spacer(),
-                Icon(Icons.person_rounded)
+                CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfilePage()));
+                      },
+                        child: Icon(Icons.person_rounded, color: Colors.black87)))
               ],
-            )),
+            )
+        ),
         iconTheme: IconThemeData(color: Colors.black87),
       ),
       drawer: DrawerScreen(),
@@ -62,11 +70,11 @@ class _HSPHomePageState extends State<HSPHomePage> {
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
-                itemCount: 10,
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 8),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     padding: const EdgeInsets.all(10),
                     height: 220,
                     width: 160,
@@ -84,13 +92,15 @@ class _HSPHomePageState extends State<HSPHomePage> {
                         PopupMenuButton(
                           itemBuilder: (BuildContext context) => [
                             PopupMenuItem(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: AppText(
                                 text: "Update",
                               ),
                             ),
                             PopupMenuItem(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: AppText(
                                 text: "Delete",
                               ),
@@ -147,11 +157,13 @@ class _HSPHomePageState extends State<HSPHomePage> {
                 }),
           ),
           Positioned(
-            bottom: 0,
+              bottom: 0,
               left: 20,
-              child: DefaultButton(buttonText: "Create a Service", press: (){
-                showDialogWidget(context);
-              })),
+              child: DefaultButton(
+                  buttonText: "Create a Service",
+                  press: () {
+                    showDialogWidget(context);
+                  })),
         ],
       ),
     );
@@ -160,16 +172,24 @@ class _HSPHomePageState extends State<HSPHomePage> {
   showDialogWidget(BuildContext context) {
     AlertDialog alert = AlertDialog(
       title: AppLargeText(text: "Alert"),
-      content: AppText(text: "Please register your hotel first!",),
+      content: AppText(
+        text: "Please register your hotel first!",
+      ),
       actions: [
-        DefaultButton(buttonText: "Register Hotel", press: (){
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HSPServiceForm()));
-        },),
+        DefaultButton(
+          buttonText: "Register Hotel",
+          press: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => HSPServiceForm()));
+          },
+        ),
       ],
     );
-    
-    showDialog(context: context, builder: (BuildContext context){
-  return alert;
-    });
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        });
   }
 }

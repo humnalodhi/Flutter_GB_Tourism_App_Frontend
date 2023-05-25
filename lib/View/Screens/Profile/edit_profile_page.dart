@@ -4,6 +4,7 @@ import 'package:gb_tour/Widgets/default_button.dart';
 import 'package:gb_tour/Widgets/rounded_input_field2.dart';
 
 import '../../../Widgets/app_large_text.dart';
+import '../Tourist/home_page.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -74,7 +75,9 @@ class EditProfilePage extends StatelessWidget {
               RoundedInputField2(hintText: 'Phone', onChanged: (value){}, icon: Icons.phone_outlined,),
               RoundedInputField2(hintText: 'Location', onChanged: (value){}, icon: Icons.location_on_outlined,),
               RoundedInputField2(hintText: 'Password', onChanged: (value){}, icon: Icons.fingerprint,),
-              DefaultButton(buttonText: 'Edit Profile', press: (){}),
+              DefaultButton(buttonText: 'Edit Profile', press: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              }),
             ],
           ),
         ),

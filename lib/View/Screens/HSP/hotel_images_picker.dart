@@ -1,23 +1,25 @@
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gb_tour/View/Screens/HSP/room_reg_form.dart';
+import 'package:gb_tour/Widgets/app_text.dart';
+import 'package:gb_tour/Widgets/default_button.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../Widgets/app_large_text.dart';
-import '../../Widgets/app_text.dart';
-import '../../Widgets/default_button.dart';
-import 'HSPNavPages/hsp_home_page.dart';
+import '../../../Widgets/app_large_text.dart';
 
-class RoomImagesPicker extends StatefulWidget {
-  const RoomImagesPicker({Key? key}) : super(key: key);
+class HotelImagesPicker extends StatefulWidget {
+  const HotelImagesPicker({Key? key}) : super(key: key);
 
   @override
-  State<RoomImagesPicker> createState() => _RoomImagesPickerState();
+  State<HotelImagesPicker> createState() => _HotelImagesPickerState();
 }
 
-class _RoomImagesPickerState extends State<RoomImagesPicker> {
+class _HotelImagesPickerState extends State<HotelImagesPicker> {
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _imageFileList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,10 +65,10 @@ class _RoomImagesPickerState extends State<RoomImagesPicker> {
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              // Image.file(
-                              //   File(_imageFileList![index].path),
-                              //   fit: BoxFit.cover,
-                              // ),
+                              Image.file(
+                                File(_imageFileList![index].path),
+                                fit: BoxFit.cover,
+                              ),
                               Positioned(
                                 right: 4,
                                 top: 4,
@@ -89,17 +91,18 @@ class _RoomImagesPickerState extends State<RoomImagesPicker> {
                     }),
               ),
             ),
-            DefaultButton(buttonText: "Post", press: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>HSPHomePage()));
+            DefaultButton(buttonText: "Done", press: (){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RoomRegForm()));
             },),
           ],
         ),
       ),
     );
   }
+
   void imageSelect() async {
     final XFile? selectedImage =
-    await _picker.pickImage(source: ImageSource.gallery);
+        await _picker.pickImage(source: ImageSource.gallery);
     if (selectedImage!.path.isNotEmpty) {
       _imageFileList!.add(selectedImage);
     }

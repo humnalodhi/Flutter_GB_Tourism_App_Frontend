@@ -41,8 +41,8 @@ class _ResetPassScreenState extends State<ResetPassScreen> {
             ),
           ),
           Positioned(
-            left: 20,
-            top: 20,
+            left: 10,
+            top: 10,
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               color: Colors.white,

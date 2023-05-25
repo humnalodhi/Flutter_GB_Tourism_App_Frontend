@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_tour/View/Screens/room_images_picker.dart';
-import '../../Widgets/app_large_text.dart';
-import '../../Widgets/default_button.dart';
+import 'package:gb_tour/View/Screens/HSP/hotel_images_picker.dart';
+import 'package:gb_tour/Widgets/default_button.dart';
+import '../../../Widgets/app_large_text.dart';
 
-class RoomRegForm extends StatefulWidget {
-  const RoomRegForm({Key? key}) : super(key: key);
+class HSPServiceForm extends StatefulWidget {
+  const HSPServiceForm({Key? key}) : super(key: key);
 
   @override
-  State<RoomRegForm> createState() => _RoomRegFormState();
+  State<HSPServiceForm> createState() => _HSPServiceFormState();
 }
 
-class _RoomRegFormState extends State<RoomRegForm> {
+class _HSPServiceFormState extends State<HSPServiceForm> {
   List dropDownListData = [
     {"title": "Hunza", "value": "1"},
     {"title": "Skardu", "value": "2"},
@@ -28,6 +28,8 @@ class _RoomRegFormState extends State<RoomRegForm> {
     CheckBoxModel(title: "CheckBox 2"),
     CheckBoxModel(title: "CheckBox 3"),
   ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +37,9 @@ class _RoomRegFormState extends State<RoomRegForm> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
-          margin: EdgeInsets.only(left: 40),
+          margin: EdgeInsets.only(left: 45),
           child: AppLargeText(
-            text: 'Room Registration Form',
+            text: 'Hotel Registration Form',
             size: 20,
           ),
         ),
@@ -49,34 +51,18 @@ class _RoomRegFormState extends State<RoomRegForm> {
           child: Column(
             children: [
               Align(
-                  alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Room Name", size: 20, )),
+                alignment: Alignment.topLeft,
+                  child: AppLargeText(text: "Hotel Name", size: 20, )),
               SizedBox(
                 height: 8,
               ),
               TextField(
                 decoration: InputDecoration(
-                    filled: true,
-                    hintText: "Enter Room Name",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    )
-                ),
-              ),
-              SizedBox(height: 20,),
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Room Number", size: 20, )),
-              SizedBox(
-                height: 8,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    filled: true,
-                    hintText: "Enter Room Number",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    )
+                  filled: true,
+                  hintText: "Enter Hotel Name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10)
+                  )
                 ),
               ),
               SizedBox(height: 20,),
@@ -139,8 +125,8 @@ class _RoomRegFormState extends State<RoomRegForm> {
               ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Hotel Location", size: 20, )),
-              SizedBox(
+                  child: AppLargeText(text: "Location", size: 20, )),
+              const SizedBox(
                 height: 8,
               ),
               TextField(
@@ -157,26 +143,8 @@ class _RoomRegFormState extends State<RoomRegForm> {
               ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Room Price/Day", size: 20, )),
-              SizedBox(
-                height: 8,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    filled: true,
-                    hintText: "Enter Room Price",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    )
-                ),
-              ),
+                  child: AppLargeText(text: "Facilities", size: 20, )),
               const SizedBox(
-                height: 20,
-              ),
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: AppLargeText(text: "Room Services", size: 20, )),
-              SizedBox(
                 height: 8,
               ),
               ListTile(
@@ -196,10 +164,10 @@ class _RoomRegFormState extends State<RoomRegForm> {
                       onChanged: (value) => onItemClicked(item),
                     ),
                     title: AppLargeText(text: item.title, size: 18),
-                  ),
-              ).toList(),
+                    ),
+                  ).toList(),
               DefaultButton(buttonText: "Next", press: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>RoomImagesPicker()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const HotelImagesPicker()));
               },),
             ],
           ),

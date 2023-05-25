@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gb_tour/View/Screens/Login.dart';
-import 'package:gb_tour/View/Screens/NavPages/home_page.dart';
 import 'package:gb_tour/View/Screens/onboardingContent.dart';
 import 'package:gb_tour/Widgets/app_text.dart';
 import 'package:gb_tour/Widgets/default_button.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'Tourist/home_page.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
