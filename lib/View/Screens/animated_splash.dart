@@ -28,14 +28,6 @@ class _AnimatedSplashState extends State<AnimatedSplash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Text(
-            //   "GB Tourism",
-            //     style: TextStyle(
-            //     fontSize: 24,
-            //       fontWeight: FontWeight.bold,
-            //     color: Colors.white,
-            //   ),
-            // ),
             Container(
               height: 130,
               width: 130,

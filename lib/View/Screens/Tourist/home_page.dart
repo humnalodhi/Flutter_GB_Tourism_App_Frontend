@@ -36,6 +36,13 @@ class _HomePageState extends State<HomePage> {
     "destination_icon.png": "Destination",
     "attraction_icon.png": "Attraction"
   };
+  var destinationImages = {
+    "Astore.jpeg": "Astore",
+    "Ghizer.jpeg": "Ghizer",
+    "Shigar.jpeg": "Shigar",
+    "Skardu.jpeg": "Skardu"
+  };
+
 
   List pages = [
   Cars(),
@@ -314,7 +321,7 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
                                 image:
-                                AssetImage("lib/assets/WelcomeImage.jpeg"),
+                                AssetImage("lib/assets/"+destinationImages.keys.elementAt(Index),),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -351,7 +358,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Container(
                                       child: AppText(
-                                        text: 'City Name',
+                                        text: destinationImages.values.elementAt(Index),
                                         color: Colors.white,
                                         size: 20,
                                       ),
